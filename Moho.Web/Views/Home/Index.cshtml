@@ -1,0 +1,70 @@
+﻿@using Moho.Web.Models
+@model IEnumerable<Screen>
+
+@{
+    ViewBag.Title = "Screens";
+}
+
+<h2>Screens</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UriName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CollectionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScreenFields)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UriName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CollectionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                <ul>
+                    @foreach (ScreenField field in item.ScreenFields)
+                    {
+                        <li>@field.Name : @field.Type (required : @field.Required, maxLength : @field.MaxLength)</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                @Html.ActionLink("Details", null, item.UriName, null, new { @class = "btn btn-info btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>

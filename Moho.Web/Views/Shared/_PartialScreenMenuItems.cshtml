@@ -1,0 +1,12 @@
+﻿@using Moho.Web.Models
+
+@{ 
+    var screens = IocHelper.mongoHelper.FindScreens();
+}
+
+@foreach (Screen scr in screens)
+{
+    <li>
+        <a href="/@scr.UriName">@scr.Name</a>
+    </li>
+}

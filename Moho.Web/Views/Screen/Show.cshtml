@@ -1,0 +1,44 @@
+﻿@using Moho.Web.Models
+
+@model ScreenShowViewModel
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.Screen.Name</h2>
+<p>
+    @Model.Screen.Description
+    <hr />
+</p>
+<p>
+    @Html.ActionLink("Create New", "add", Model.Screen.UriName, null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-hover">
+    <tr>
+        @foreach (ScreenField field in Model.Screen.ScreenFields)
+        {
+            <th>
+                @field.Name
+            </th>
+        }
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            @foreach (ScreenField field in Model.Screen.ScreenFields)
+            {
+                <td>
+                    @item[field.Name]
+                </td>
+            }
+            <td>
+                @Html.ActionLink("Edit", "edit", Model.Screen.UriName, new { id = item["_id"] }, new { @class = "btn btn-warning btn-xs" })
+                @Html.ActionLink("Delete", "del", Model.Screen.UriName, new { id = item["_id"] }, new { @class = "btn btn-danger btn-xs", onclick="return confirm('Are you sure to deleting this record?');" })
+            </td>
+        </tr>
+    }
+
+</table>

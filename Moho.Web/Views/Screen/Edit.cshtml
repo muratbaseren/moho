@@ -1,0 +1,39 @@
+﻿@using Moho.Web.Models
+@model Moho.Web.Models.ScreenEditViewModel
+
+@{
+    ViewBag.Title = "Edit - " + Model.Screen.Name;
+}
+
+<h2>Edit @Model.Screen.Name Item</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Update Item</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @foreach (ScreenField field in Model.Screen.ScreenFields)
+        {
+            <div class="form-group">
+                @Html.Label(field.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox(field.Name, Model.Item[field.Name], new { @class = "form-control" })
+                    @Html.ValidationMessage(field.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.Hidden("_id", Model.Item["_id"].ToString())
+                <button type="submit" class="btn btn-warning">
+                    <span class="glyphicon glyphicon-edit"></span> Save
+                </button>
+            </div>
+        </div>
+    </div>
+}
