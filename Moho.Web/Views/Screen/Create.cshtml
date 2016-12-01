@@ -21,7 +21,26 @@
             <div class="form-group">
                 @Html.Label(field.Name, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextBox(field.Name, "", new { @class = "form-control" })
+                    @switch (field.Type)
+                    {
+                        case ScreenFieldTypeEnum.Text:
+                            @Html.TextBox(field.Name, "", new { @class = "form-control" })
+                            break;
+                        case ScreenFieldTypeEnum.Number:
+                            @Html.TextBox(field.Name, "", new { @class = "form-control", type = "number" })
+                            break;
+                        case ScreenFieldTypeEnum.Date:
+                            @Html.TextBox(field.Name, "", new { @class = "form-control", type = "date" })
+                            break;
+                        case ScreenFieldTypeEnum.Checkbox:
+                            @Html.CheckBox(field.Name, false, new { })
+                            break;
+                        case ScreenFieldTypeEnum.TextArea:
+                            @Html.TextArea(field.Name, "", 5, 30, new { @class = "form-control" })
+                            break;
+                        default:
+                            break;
+                    }
                     @Html.ValidationMessage(field.Name, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -40,7 +40,7 @@ namespace Moho.Web.Controllers
                     new ScreenField() { Name ="field2", MaxLength=-1, Required=false, Type= ScreenFieldTypeEnum.Date },
                     new ScreenField() { Name ="field3", MaxLength=-1, Required=false, Type= ScreenFieldTypeEnum.Number },
                     new ScreenField() { Name ="field4", MaxLength=-1, Required=false, Type= ScreenFieldTypeEnum.Checkbox },
-                    new ScreenField() { Name ="field5", MaxLength=-1, Required=false, Type= ScreenFieldTypeEnum.Radiobox }
+                    new ScreenField() { Name ="field5", MaxLength=255, Required=false, Type= ScreenFieldTypeEnum.TextArea },
                 });
 
                 IocHelper.mongoHelper.InsertScreen(screen);

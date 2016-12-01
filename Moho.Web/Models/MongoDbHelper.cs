@@ -184,9 +184,7 @@ namespace Moho.Web.Models
         Text = 0,
         Number = 1,
         Date = 2,
-        DateTime = 3,
         Checkbox = 4,
-        Radiobox = 5,
         TextArea = 6
     }
 

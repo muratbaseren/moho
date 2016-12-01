@@ -36,7 +36,7 @@ namespace Moho.Web.Controllers
 
             foreach (string key in screen.ScreenFields.Select(x => x.Name))
             {
-                values.Add(key, collection[key]);
+                values.Add(key, collection.GetValues(key)[0]);
             }
 
             IocHelper.mongoHelper.InsertToUnknownCollection(screen, values);
