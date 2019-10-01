@@ -115,6 +115,13 @@ namespace Moho.Web.Models
             col.InsertOne(values);
         }
 
+        public void CreateUnknownCollection(Screen screen)
+        {
+            CreateCollectionOptions<Dictionary<string, object>> collectionOptions = new CreateCollectionOptions<Dictionary<string, object>>();
+
+            _database.CreateCollection(screen.CollectionName, collectionOptions);
+        }
+
         public void DeleteFromUnknownCollection(Screen screen, string id)
         {
             var col = _database.GetCollection<Dictionary<string, object>>(screen.CollectionName);

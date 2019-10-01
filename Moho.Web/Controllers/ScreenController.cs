@@ -41,11 +41,12 @@ namespace Moho.Web.Controllers
 
             IocHelper.mongoHelper.InsertToUnknownCollection(screen, values);
 
-            return RedirectToAction("Show", new { uriName = uriName });
+            return RedirectToAction("Show", new { uriName });
         }
 
-        public ActionResult Edit(string id, string uriName)
+        public ActionResult Edit(string id)
         {
+            string uriName = RouteData.Values["uriName"].ToString();
             Screen screen = IocHelper.mongoHelper.FindScreenByUriName(uriName);
             var item = IocHelper.mongoHelper.FindItemFromUnknownCollection(screen, id);
 

@@ -44,6 +44,7 @@ namespace Moho.Web.Controllers
                 });
 
                 IocHelper.mongoHelper.InsertScreen(screen);
+                IocHelper.mongoHelper.CreateUnknownCollection(screen);
 
                 return RedirectToAction("Index");
             }

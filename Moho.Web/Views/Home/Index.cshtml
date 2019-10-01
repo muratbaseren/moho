@@ -60,9 +60,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
-                @Html.ActionLink("Details", null, item.UriName, null, new { @class = "btn btn-info btn-xs" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+                @Html.ActionLink("Edit", "Edit", "Home", new { id = item.Id }, new { @class = "btn btn-warning btn-xs", disabled = "disabled" })
+                @Html.ActionLink("Details", "Details", "Home", new { id = item.Id }, new { @class = "btn btn-info btn-xs", disabled = "disabled" })
+                @Html.ActionLink("Delete", "Home", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs", disabled = "disabled" })
             </td>
         </tr>
     }
